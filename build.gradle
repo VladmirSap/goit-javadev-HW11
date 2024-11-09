@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testImplementation platform('org.junit:junit-bom:5.7.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:11.0.0'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0'
+
+    // Thymeleaf
+    implementation 'org.thymeleaf:thymeleaf:3.1.2.RELEASE'
+
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+    providedCompile 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+
+}
+
+war {
+    archiveBaseName = 'TimeApp'
+    archiveVersion = '1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
